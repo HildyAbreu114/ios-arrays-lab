@@ -8,6 +8,9 @@ Create an array of strings called `colors` that contain "orange", "red", "yellow
 
 Then, using array subscripting and string interpolation, print out the String `"orange, yellow, and lavender are some of my favorite colors"`.
 
+var array = ["orange", "red", "yellow", "turquoise", "lavender"]
+
+print ("\(array[0]), \(array[2]), \(array[4])", "are some of my favorite colors")
 
 ## Question 2
 
@@ -15,12 +18,35 @@ Remove "Illinois" and "Kansas" from the array below.
 
 `var westernStates = ["California", "Oregon", "Washington", "Idaho", "Illinois", "Kansas"]`
 
+var westernStates = ["California", "Oregon", "Washington", "Idaho", "Illinois", "Kansas"]
+var newArray = [String] ()
+
+var ill = "Illinois"
+var kan = "Kansas"
+
+for i in westernStates{
+if i != ill && i != kan{
+newArray.append(i)
+}
+}
+print (newArray)
 
 ## Question 3
 
 Iterate through the array below. For each each state, print out whether or not it is **in the continental United States.**
 
 `let moreStates = ["Hawaii", "New Mexico", "Alaska", "Montana", "Texas", "New York", "Florida"]`
+
+var haw = "Hawaii"
+var al = "Alaska"
+
+for state in moreStates {
+if state == haw || state == al {
+print("\(state) is not in the continental US")
+continue
+}
+print("\(state) is in the continental US")
+}
 
 
 ## Question 4
@@ -33,14 +59,45 @@ Iterate through the array below. For each sentence, print out how many non-white
 
 `let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]`
 
+var myFavQuotesArr = myFavoriteQuotes[0]
+var space = " "
+var currentWord = ""
+var count = 0
+
+for sentence in myFavoriteQuotes {
+for letters in sentence {
+if letters != " " {
+count += 1
+
+}
+}
+
+print("there are \(count) in sentence: \(sentence) ")
+count = 0
+
+}
 
 ## Question 5
 
 Iterate through `garden` and place any 🌷 that you find into the `basket`. Replace any 🌷 that you pick up with `"dirt"`. Then print how many 🌷 are in your `basket`.
 
 ```swift
+
 var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
 var basket = [String]()
+var floweerCount = 0
+var index = 0
+
+for (index, things) in garden.enumerated() {
+if things == "🌷"{
+floweerCount += 1
+basket.append("🌷")
+garden[index] = "dirt"
+
+}
+}
+print("There are \(floweerCount)  flowers in my basket \(basket) but my garden is just dirt! \(garden)")
+
 ```
 
 ## Question 6
@@ -54,6 +111,22 @@ The below array represents an unfinished batting lineup for a baseball team. **Y
 
 `var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]`
 
+var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]
+
+for (index, player) in battingLineup.enumerated(){
+if player == "Jeter"{
+battingLineup[index] = "Tejada"
+}
+if player == "Thomas"{
+battingLineup[index] = "Guerrero"
+}
+if index == 7 {
+battingLineup[index] = "Reyes"
+}
+}
+battingLineup.append("Susuki")
+battingLineup.removeFirst()
+print(battingLineup)
 
 ## Question 7
 
@@ -87,6 +160,14 @@ target = 3
 
 //false
 ```
+var numbers: [Int] = [1,2,3,4,5,6,7,8,9,10]
+let target: Int = 4
+for number in numbers{
+if number == target{
+print ("target number \(target) is equal to \(number) in the array")
+}
+}
+```
 
 
 ## Question 8
@@ -98,8 +179,14 @@ let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int
 
 //This creates an array of 100 numbers in between 0 and 200.  For now, you don't need to worry about how it does that.
 ```
+let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
+var greatestNumber = 0
+for number in arrayOfNumbers {
+if number >= 200 {
+greatestNumber = number
+}
 
-
+}
 ## Question 9
 
 Find the smallest value in an array of Int.  Do not use the built in min() method.
@@ -108,7 +195,16 @@ Find the smallest value in an array of Int.  Do not use the built in min() metho
 let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
 
 //This creates an array of 100 numbers in between 0 and 200.  For now, you don't need to worry about how it does that.
+
 ```
+let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
+var lowestNum = 0
+for number in arrayOfNumbers {
+if number <= 1{
+lowestNum = number
+}
+}
+print(lowestNum)
 
 
 ## Question 10
@@ -117,6 +213,15 @@ Iterate through `secondListOfNumbers`, and print out all the odd numbers.
 
 `var secondListOfNumbers = [19,13,14,19,101,10000,141,404]`
 
+var secondListOfNumbers = [19,13,14,19,101,10000,141,404]
+var oddNumbers: [Int] = []
+for number in secondListOfNumbers {
+if number % 2 == 1 {
+oddNumbers.append(number)
+}
+}
+print(oddNumbers)
+
 
 ## Question 11
 
@@ -124,12 +229,30 @@ Iterate through `thirdListOfNumbers`, and print out the sum.
 
 `var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
 
+var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]
+var sum = 0
+for num in thirdListOfNumbers{
+if num > 0{
+sum += num
+}
+}
+print(sum)
+<!---->
 
 ## Question 12
 
 Iterate through `thirdListOfNumbers`, and print out the sum of all the even numbers.
 
 `var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
+
+var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]
+var sumEven = 0
+for num in thirdListOfNumbers {
+if num % 2 == 0 {
+sumEven += num
+}
+}
+print (sumEven)
 
 
 ## Question 13
@@ -141,6 +264,19 @@ var listOne = [28, 64, 7, 96, 13, 32, 94, 11, 80, 68]
 var listTwo = [18, 94, 48, 6, 42, 68, 79, 76, 13, 7]
 var sharedElements = [Int]()
 ```
+var listOne = [28, 64, 7, 96, 13, 32, 94, 11, 80, 68]
+var listTwo = [18, 94, 48, 6, 42, 68, 79, 76, 13, 7]
+var sharedElements = [Int]()
+
+
+for number1 in listOne {
+for number2 in listTwo {
+if number1 == number2{
+sharedElements.append(number1)
+}
+}
+}
+print (sharedElements.count)
 
 
 ## Question 14
@@ -158,12 +294,31 @@ Find the second smallest number in an Array of Ints
 
 `let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}`
 
+let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
+var secondLowest = 0
+for number in arrayOfNumbers {
+if number == 2 {
+secondLowest += number
+}
+}
+print (secondLowest)
+
 
 ## Question 16
 
 If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
 Find the sum of all the multiples of 3 or 5 below 1000.
+
+var multiArray = [Int()]
+var sum = 0
+for number in 0...999 {
+if number % 3 == 0 || number % 5 == 0{
+multiArray.append(number)
+sum += number
+}
+}
+print (sum)
 
 
 ## Question 17
@@ -190,6 +345,22 @@ input: `["apes", "abba", "apple"]`
 
 output: `"abba"`
 
+var random = ["apes", "abba", "apple"]
+var aCount = 0
+var aCount1 = [Int()]
+
+for things in random {
+for letters in things{
+if things == "a"{
+aCount += 1
+
+}
+}
+aCount1.append(aCount)
+aCount = 0
+}
+print("There are \(aCount1.max() ?? 0) a's in \(random[1]) containing the most a's " )
+
 
 ## Question 20
 
@@ -199,6 +370,18 @@ Input: `[[2,4,1],[3,0],[9,3]]`
 
 Output: `[9,3]`
 
+var array = [[2,4,1],[3,0],[9,3]]
+var sum = 0
+
+for array1 in  array {
+for number in array1 {
+if number > -1{
+sum += number
+}
+}
+print (sum)
+sum = 0
+}
 
 ## Question 21
 
